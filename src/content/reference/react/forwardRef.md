@@ -1,10 +1,12 @@
 ---
 title: forwardRef
+translators: [이승효]
 ---
 
 <Intro>
 
 `forwardRef` lets your component expose a DOM node to parent component with a [ref.](/learn/manipulating-the-dom-with-refs)
+<Trans>`forwardRef`를 사용하면 컴포넌트가 [ref](/learn/manipulating-the-dom-with-refs)를 사용하여 부모 컴포넌트에 DOM 노드를 노출할 수 있습니다.</Trans>
 
 ```js
 const SomeComponent = forwardRef(render)
@@ -16,11 +18,12 @@ const SomeComponent = forwardRef(render)
 
 ---
 
-## Reference {/*reference*/}
+## Reference<Trans>참조</Trans> {/*reference*/}
 
 ### `forwardRef(render)` {/*forwardref*/}
 
 Call `forwardRef()` to let your component receive a ref and forward it to a child component:
+<Trans>컴포넌트가 ref를 받아 하위 컴포넌트로 전달하도록 하려면 forwardRef()를 호출하세요:</Trans>
 
 ```js
 import { forwardRef } from 'react';
@@ -31,25 +34,33 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 ```
 
 [See more examples below.](#usage)
+<Trans>[아래에 더 많은 예제가 있습니다.](#usage)</Trans>
 
-#### Parameters {/*parameters*/}
+#### Parameters<Trans>파라미터</Trans> {/*parameters*/}
 
 * `render`: The render function for your component. React calls this function with the props and `ref` that your component received from its parent. The JSX you return will be the output of your component.
+<Trans>
+* `render`: 컴포넌트의 렌더링 함수입니다. React는 컴포넌트가 부모로부터 받은 props와 `ref`를 가지고 이 함수를 호출합니다. 반환하는 JSX는 컴포넌트의 출력이 됩니다.
+</Trans>
 
-#### Returns {/*returns*/}
+#### Returns<Trans>반환</Trans> {/*returns*/}
 
 `forwardRef` returns a React component that you can render in JSX. Unlike React components defined as plain functions, a component returned by `forwardRef` is also able to receive a `ref` prop.
+<Trans>`forwardRef`는 JSX에서 렌더링할 수 있는 React 컴포넌트를 반환합니다. 일반 함수로 정의된 React 컴포넌트와 달리, `forwardRef`가 반환하는 컴포넌트는 `ref` prop를 받을 수도 있습니다.</Trans>
 
-#### Caveats {/*caveats*/}
+#### Caveats<Trans>경고</Trans> {/*caveats*/}
 
 * In Strict Mode, React will **call your render function twice** in order to [help you find accidental impurities.](#my-initializer-or-updater-function-runs-twice) This is development-only behavior and does not affect production. If your render function is pure (as it should be), this should not affect the logic of your component. The result from one of the calls will be ignored.
-
+<Trans>
+* Strict Mode에서 React는 [실수로 발생한 불순물](#my-initializer-or-updater-function-runs-twice)을 찾기 위해 **렌더링 함수를 두 번 호출**합니다. 이는 개발전용 동작이며 프로덕션에는 영향을 미치지 않습니다. 렌더링 함수가 순수하다면(그래야만 하는 것처럼) 컴포넌트의 로직에 영향을 미치지 않을 것입니다. 호출 중 하나의 결과는 무시됩니다.
+</Trans>
 
 ---
 
-### `render` function {/*render-function*/}
+### `render` function<Trans>`render` 함수</Trans> {/*render-function*/}
 
 `forwardRef` accepts a render function as an argument. React calls this function with `props` and `ref`:
+<Trans>`forwardRef`는 render 함수를 인자로 받습니다. React는 이 함수를 `props`, `ref`와 함께 호출합니다:</Trans>
 
 ```js
 const MyInput = forwardRef(function MyInput(props, ref) {
@@ -62,15 +73,21 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 });
 ```
 
-#### Parameters {/*render-parameters*/}
+#### Parameters<Trans>파라미터</Trans> {/*render-parameters*/}
 
 * `props`: The props passed by the parent component.
 
 * `ref`:  The `ref` attribute passed by the parent component. The `ref` can be an object or a function. If the parent component has not passed a ref, it will be `null`. You should either pass the `ref` you receive to another component, or pass it to [`useImperativeHandle`.](/reference/react/useImperativeHandle)
+<TransBlock>
+* `props`: 부모 컴포넌트에서 전달된 props 입니다.
 
-#### Returns {/*render-returns*/}
+* `ref`:  부모 컴포넌트에서 전달된 `ref` 속성입니다. `ref`는 객체나 함수일 수 있습니다. 부모 컴포넌트가 `ref`를 전달하지 않았다면 `null`이 됩니다. 받은 `ref`를 다른 컴포넌트에 전달하거나 [`useImperativeHandle`](/reference/react/useImperativeHandle)에 전달해야 합니다.
+</TransBlock>
+
+#### Returns<Trans>반환</Trans> {/*render-returns*/}
 
 `forwardRef` returns a React component that you can render in JSX. Unlike React components defined as plain functions, the component returned by `forwardRef` is able to take a `ref` prop.
+<Trans>`forwardRef`는 JSX에서 렌더링할 수 있는 React 컴포넌트를 반환합니다. 일반 함수로 정의된 React 컴포넌트와 달리, `forwardRef`가 반환하는 컴포넌트는 `ref` prop를 받을 수도 있습니다.</Trans>
 
 ---
 
